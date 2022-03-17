@@ -1,0 +1,16 @@
+
+version: '3.8'
+
+services:
+  db:
+    container_name: postgres-lesson-1
+    image: postgres:12-alpine
+    environment:
+      - POSTGRES_USER=${TYPEORM_USERNAME}
+      - POSTGRES_PASSWORD=${TYPEORM_PASSWORD}
+      - POSTGRES_DB=${TYPEORM_DATABASE}
+    volumes:
+      - ./pg-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
