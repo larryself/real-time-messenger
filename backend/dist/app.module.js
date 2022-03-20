@@ -29,18 +29,19 @@ AppModule = __decorate([
                 imports: [config_1.ConfigModule],
                 inject: [config_1.ConfigService],
                 useFactory: async (config) => ({
-                    type: config.get('TYPEORM_CONNECTION'),
                     username: config.get('TYPEORM_USERNAME'),
                     password: config.get('TYPEORM_PASSWORD'),
                     database: config.get('TYPEORM_DATABASE'),
-                    port: config.get('TYPEORM_PORT'),
                     entities: [__dirname + '/**/entity/*.entity{.ts,.js}'],
-                    synchronize: true,
+                    type: config.get('TYPEORM_CONNECTION'),
+                    host: config.get('TYPEORM_HOST'),
+                    port: 5432,
                     autoLoadEntities: true,
+                    synchronize: true,
                     logging: true,
-                })
+                }),
             }),
-            operators_module_1.OperatorsModule
+            operators_module_1.OperatorsModule,
         ],
         providers: [],
     })

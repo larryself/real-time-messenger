@@ -21,22 +21,22 @@ __decorate([
 ], OperatorEntity.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(),
-    (0, typeorm_1.Column)(),
+    (0, typeorm_1.Column)({ unique: true }),
     __metadata("design:type", String)
 ], OperatorEntity.prototype, "name", void 0);
 __decorate([
     (0, graphql_1.Field)(),
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)
-], OperatorEntity.prototype, "createdDate", void 0);
+], OperatorEntity.prototype, "createdAt", void 0);
 __decorate([
     (0, graphql_1.Field)(),
-    (0, typeorm_1.CreateDateColumn)(),
+    (0, typeorm_1.UpdateDateColumn)(),
     __metadata("design:type", Date)
-], OperatorEntity.prototype, "updatedDate", void 0);
+], OperatorEntity.prototype, "updatedAt", void 0);
 OperatorEntity = __decorate([
     (0, graphql_1.ObjectType)(),
-    (0, typeorm_1.Entity)('operator')
+    (0, typeorm_1.Entity)('operators')
 ], OperatorEntity);
 exports.OperatorEntity = OperatorEntity;
 //# sourceMappingURL=operator.entity.js.map

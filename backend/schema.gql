@@ -2,7 +2,7 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-input CreateOperatorInput {
+input CreateUserInput {
   name: String!
 }
 
@@ -12,17 +12,18 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 scalar DateTime
 
 type Mutation {
-  createOperator(createOperator: CreateOperatorInput!): OperatorEntity!
+  createUser(createUser: CreateUserInput!): UserEntity!
+  removeUser(id: Float!): Float!
 }
 
-type OperatorEntity {
-  createdDate: DateTime!
+type UserEntity {
+  createdAt: DateTime!
   id: ID!
   name: String!
-  updatedDate: DateTime!
+  updatedAt: DateTime!
 }
 
 type Query {
-  getAllOperators: [OperatorEntity!]!
-  getOneOperator(id: Float!): OperatorEntity!
+  getAllUsers: [UserEntity!]!
+  getOneUser(id: Float!): UserEntity!
 }

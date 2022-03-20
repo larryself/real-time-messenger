@@ -17,7 +17,7 @@ let OperatorsModule = class OperatorsModule {
 OperatorsModule = __decorate([
     (0, common_1.Module)({
         imports: [typeorm_1.TypeOrmModule.forFeature([operator_entity_1.OperatorEntity])],
-        providers: [operator_service_1.OperatorService, operator_resolver_1.OperatorResolver]
+        providers: [operator_service_1.OperatorService, operator_resolver_1.OperatorResolver],
     })
 ], OperatorsModule);
 exports.OperatorsModule = OperatorsModule;

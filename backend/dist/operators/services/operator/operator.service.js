@@ -30,6 +30,10 @@ let OperatorService = class OperatorService {
     async getAllOperators() {
         return await this.operatorRepository.find();
     }
+    async removeOperator(id) {
+        await this.operatorRepository.delete({ id });
+        return id;
+    }
     async pay(phone, amount) {
         return phone;
     }

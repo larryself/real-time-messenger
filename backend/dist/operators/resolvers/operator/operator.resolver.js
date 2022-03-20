@@ -15,14 +15,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.OperatorResolver = void 0;
 const graphql_1 = require("@nestjs/graphql");
 const operator_entity_1 = require("../../entities/operator.entity");
-const create_operatos_input_1 = require("../../inputs/create-operatos.input");
 const operator_service_1 = require("../../services/operator/operator.service");
+const create_operator_input_1 = require("../../inputs/create-operator.input");
 let OperatorResolver = class OperatorResolver {
     constructor(operatorService) {
         this.operatorService = operatorService;
     }
-    async createOperator(createOpeatorInput) {
-        return await this.operatorService.createOperator(createOpeatorInput);
+    async createOperator(createOperatorInput) {
+        return await this.operatorService.createOperator(createOperatorInput);
     }
     async getOneOperator(id) {
         return await this.operatorService.getOneOperator(id);
@@ -30,12 +30,15 @@ let OperatorResolver = class OperatorResolver {
     async getAllOperators() {
         return await this.operatorService.getAllOperators();
     }
+    async removeOperator(id) {
+        return await this.operatorService.removeOperator(id);
+    }
 };
 __decorate([
     (0, graphql_1.Mutation)(() => operator_entity_1.OperatorEntity),
     __param(0, (0, graphql_1.Args)('createOperator')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_operatos_input_1.CreateOperatorInput]),
+    __metadata("design:paramtypes", [create_operator_input_1.CreateOperatorInput]),
     __metadata("design:returntype", Promise)
 ], OperatorResolver.prototype, "createOperator", null);
 __decorate([
@@ -51,6 +54,13 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], OperatorResolver.prototype, "getAllOperators", null);
+__decorate([
+    (0, graphql_1.Mutation)(() => Number),
+    __param(0, (0, graphql_1.Args)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], OperatorResolver.prototype, "removeOperator", null);
 OperatorResolver = __decorate([
     (0, graphql_1.Resolver)('Operator'),
     __metadata("design:paramtypes", [operator_service_1.OperatorService])
