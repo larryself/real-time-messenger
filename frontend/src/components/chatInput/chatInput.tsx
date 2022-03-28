@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FC, FormEvent, useState } from 'react';
-import { Container, Input, Button } from "./style";
-import { useSendMessageMutation } from "../../store/user/user";
+import { Container, Input, Button } from './style';
+import { useSendMessageMutation } from '../../store/user/user';
 
 interface ChatInputProps {
     name: string ;
@@ -23,7 +23,7 @@ export const ChatInput: FC<ChatInputProps> = ({name}) => {
         <Container onSubmit={handleSubmit}>
             <Input type={'text'} name={'message'} placeholder={'Ваше сообщение'} value={message}
                    onChange={handleChange}/>
-            <Button type={"submit"}>Отправить</Button>
+            <Button type={'submit'}>Отправить</Button>
         </Container>
     );
 };

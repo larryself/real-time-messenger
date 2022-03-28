@@ -17,7 +17,9 @@
     "yarn": "1.22.17"
   },
   "image": "heroku/nodejs",
-  "addons": ["heroku-postgresql"],
+  "addons": [
+    "heroku-postgresql"
+  ],
   "buildpacks": [
     {
       "url": "heroku/nodejs"
@@ -26,5 +28,6 @@
   "cacheDirectories": [
     "frontend/node_modules",
     "backend/node_modules"
-  ]
+  ],
+  "dependencies": {}
 }

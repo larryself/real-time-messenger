@@ -10,8 +10,8 @@ interface InputBoxProps{
     onBlur: (e: any) => void;
     value : string;
     className?: string;
-
 }
+
 export const InputBox: FC<InputBoxProps> = ({placeholder,type = 'text',label,name, children, onChange, onBlur, value,className}) => {
     return (
         <Container>

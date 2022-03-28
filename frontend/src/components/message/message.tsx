@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import { Inner,Container, Header, Name, Data, Content } from './style';
-import {MessagesType} from "../../types";
+import { MessagesType } from "../../types";
 
 interface MessageProps {
     message: MessagesType;

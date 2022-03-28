@@ -1,8 +1,8 @@
 import React from 'react';
-import {useAppSelector} from "../../hooks/useAppSelector";
-import {Wrapper} from "../wrapper";
-import {useAction} from "../../hooks/useAction";
-import {Header, Button, Container, Name} from "./style";
+import { useAppSelector } from '../../hooks/useAppSelector';
+import { Wrapper } from '../wrapper';
+import { useAction } from '../../hooks/useAction';
+import { Header, Button, Container, Name } from './style';
 
 export const PageHeader = () => {
     const {name} = useAppSelector(state => state.user);

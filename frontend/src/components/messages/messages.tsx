@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useRef } from 'react';
-import { Message } from "../message/message";
-import { List } from "./style";
-import { MessagesType } from "../../types";
+import { Message } from '../message/message';
+import { List } from './style';
+import { MessagesType } from '../../types';
 
 interface MessagesProps {
     messages: MessagesType[];

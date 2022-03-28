@@ -1,8 +1,8 @@
-import React, {FC} from 'react';
-import {Messages} from "../messages/messages";
-import { Container, ChatInner } from "./style";
-import {ChatInput} from "../chatInput/chatInput";
-import {MessagesType} from "../../types";
+import React, { FC } from 'react';
+import { Messages } from '../messages/messages';
+import { Container, ChatInner } from './style';
+import { ChatInput } from '../chatInput/chatInput';
+import { MessagesType } from '../../types';
 
 interface ChatProps {
     messages: MessagesType[],

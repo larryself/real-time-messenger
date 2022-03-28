@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import { Wrapper } from "../../components/wrapper"
-import { Inner } from "./style"
-import { useLoginMutation } from "../../store/user/user";
-import { LoginForm } from "../../components/loginForm/loginForm";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { Wrapper } from '../../components/wrapper'
+import { Inner } from './style'
+import { useLoginMutation } from '../../store/user/user';
+import { LoginForm } from '../../components/loginForm/loginForm';
+import { useNavigate } from 'react-router-dom';
 
 export const Login = () => {
     const navigate = useNavigate();

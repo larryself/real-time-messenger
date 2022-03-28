@@ -1,11 +1,11 @@
-import React, { FC } from "react";
-import { InputBox } from "../inputBox/inputBox";
-import { Container, Title, Button, Error } from "./style";
-import { Link } from "react-router-dom";
-import { useFormik } from "formik";
-import { Wrapper } from "../wrapper";
-import { Inner } from "../../page/login/style";
-import { validate } from "./validate";
+import React, { FC } from 'react';
+import { InputBox } from '../inputBox/inputBox';
+import { Container, Title, Button, Error } from './style';
+import { Link } from 'react-router-dom';
+import { useFormik } from 'formik';
+import { Wrapper } from '../wrapper';
+import { Inner } from '../../page/login/style';
+import { validate } from './validate';
 
 interface LoginFormProps {
     title: string;
