@@ -18,7 +18,7 @@ import { join } from 'path';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: async (config: ConfigService) => ({
-        type: config.get<'aurora-data-api'>('TYPEORM_CONNECTION'),
+        type: config.get<'aurora-data-api'>('POSTGRES_CONNECTION'),
         username: config.get<string>('POSTGRES_USER'),
         password: config.get<string>('POSTGRES_PW'),
         database: config.get<string>('POSTGRES_DB'),
