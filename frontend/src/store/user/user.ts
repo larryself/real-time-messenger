@@ -30,7 +30,7 @@ enum ChatEvent {
 let socket: Socket;
 function getSocket() {
     if (!socket) {
-        socket = io('https://real-time-messenger18.herokuapp.com', {
+        socket = io('https://realtime-messenger18.herokuapp.com', {
             withCredentials: true,
         });
     }
@@ -81,7 +81,7 @@ export const userApi = createApi({
                 try {
                     await cacheDataLoaded;
 
-                    const socket = io('https://real-time-messenger18.herokuapp.com');
+                    const socket = io('https://realtime-messenger18.herokuapp.com');
 
                     socket.on('connect', () => {
                         socket.emit(ChatEvent.RequestAllMessages);
