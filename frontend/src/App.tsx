@@ -7,8 +7,8 @@ export const App = () => {
 
   return (
     <BrowserRouter>
-        <AppRouter/>
         <GlobalStyle/>
+        <AppRouter/>
     </BrowserRouter>
   );
 }
