@@ -6,12 +6,12 @@ import { UsersModule } from './users/users.module';
 import { PostsModule } from './posts/posts.module';
 import { AuthModule } from './auth/auth.module';
 import { AppGateway } from './app.gateway';
-import {join} from 'path';
+import { join } from 'path';
 
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '../..', 'frontend/build')
+      rootPath: join(__dirname, '../..', 'frontend/build'),
     }),
     ConfigModule.forRoot({ isGlobal: true, envFilePath: '../.env' }),
     TypeOrmModule.forRootAsync({
