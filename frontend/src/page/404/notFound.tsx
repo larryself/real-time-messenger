@@ -1,10 +1,12 @@
 import React from 'react';
+import { Container, Link } from './style';
 
 export const NotFound = () => {
     return (
-        <div>
-            <h1>Not found page</h1>
-        </div>
+        <Container>
+            <h1>Page not found</h1>
+            <Link href={'/'}>На главную</Link>
+        </Container>
     );
 };
 
