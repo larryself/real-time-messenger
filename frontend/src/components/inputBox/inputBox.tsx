@@ -12,7 +12,7 @@ interface InputBoxProps{
     className?: string;
 
 }
-const InputBox: FC<InputBoxProps> = ({placeholder,type = 'text',label,name, children, onChange, onBlur, value,className}) => {
+export const InputBox: FC<InputBoxProps> = ({placeholder,type = 'text',label,name, children, onChange, onBlur, value,className}) => {
     return (
         <Container>
             <label htmlFor={name}>
@@ -33,5 +33,3 @@ const InputBox: FC<InputBoxProps> = ({placeholder,type = 'text',label,name, chil
         </Container>
     );
 };
-
-export default InputBox;

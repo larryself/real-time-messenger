@@ -4,7 +4,7 @@ import {Wrapper} from "../wrapper";
 import {useAction} from "../../hooks/useAction";
 import {Header, Button, Container, Name} from "./style";
 
-const PageHeader = () => {
+export const PageHeader = () => {
     const {name} = useAppSelector(state => state.user);
     const {removeUser} = useAction();
     const signOut = () => {
@@ -22,5 +22,5 @@ const PageHeader = () => {
     );
 };
 
-export default PageHeader;
+
 

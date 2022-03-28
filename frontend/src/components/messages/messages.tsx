@@ -1,13 +1,14 @@
-import React, {FC, useEffect, useRef} from 'react';
-import {Message} from "../message/message";
-import {List} from "./style";
+import React, { FC, useEffect, useRef } from 'react';
+import { Message } from "../message/message";
+import { List } from "./style";
+import { MessagesType } from "../../types";
 
 interface MessagesProps {
-    messages: {id:string, to: string, message: string, created_at:string}[];
+    messages: MessagesType[];
     name: string;
 }
 
-const Messages:FC<MessagesProps> = ({messages,name}) => {
+export const Messages:FC<MessagesProps> = ({messages,name}) => {
     const messagesContainer = useRef<null | HTMLUListElement>(null);
 
     useEffect(() => {
@@ -29,4 +30,3 @@ const Messages:FC<MessagesProps> = ({messages,name}) => {
     );
 };
 
-export default Messages;

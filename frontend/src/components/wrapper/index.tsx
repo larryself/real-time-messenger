@@ -1,5 +1,5 @@
-import React, {FC} from 'react';
-import {Wrap} from './style';
+import React, { FC } from 'react';
+import { Wrap } from './style';
 
 interface WrapperProps {
     children: React.ReactNode;

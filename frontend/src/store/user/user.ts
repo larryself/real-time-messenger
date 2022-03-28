@@ -20,6 +20,7 @@ interface LoginResponse {
     name: string,
     password: string
 }
+
 enum ChatEvent {
     SendMessage = 'send_message',
     RequestAllMessages = 'request_all_messages',

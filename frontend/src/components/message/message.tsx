@@ -1,7 +1,9 @@
 import React, {FC} from 'react';
-import {Inner,Container, Header, Name, Data, Content} from './style';
+import { Inner,Container, Header, Name, Data, Content } from './style';
+import {MessagesType} from "../../types";
+
 interface MessageProps {
-    message: {id:string, to: string, message: string, created_at: string;};
+    message: MessagesType;
     name: string;
 }
 

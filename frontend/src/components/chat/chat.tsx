@@ -1,9 +1,14 @@
-import React from 'react';
-import Messages from "../messages/messages";
+import React, {FC} from 'react';
+import {Messages} from "../messages/messages";
 import { Container, ChatInner } from "./style";
-import ChatInput from "../chatInput/chatInput";
+import {ChatInput} from "../chatInput/chatInput";
+import {MessagesType} from "../../types";
 
-const Chat = ({messages, name}: any) => {
+interface ChatProps {
+    messages: MessagesType[],
+    name: string,
+}
+export const Chat: FC<ChatProps> = ({messages, name})=> {
     return (
         <Container>
             <ChatInner>
@@ -14,4 +19,4 @@ const Chat = ({messages, name}: any) => {
     );
 };
 
-export default Chat;
+
