@@ -4,6 +4,7 @@ import { Signup } from "../page/signup/signup";
 import { HomePage } from "../page/index/index";
 import { Login } from "../page/login/login";
 import {useAppSelector} from "../hooks/useAppSelector";
+import {NotFound} from "../page/404/notFound";
 
 
 interface PrivateRouteProps {
@@ -29,6 +30,7 @@ export const AppRouter = () => {
                     <HomePage/>
                 </PrivateRoute>
             } />
+            <Route path="*" element={<NotFound />} />
         </Routes>
     );
 }
