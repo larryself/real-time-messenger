@@ -22,6 +22,7 @@ export const GlobalStyle = createGlobalStyle`
     --default-bg: #36393F;
     --white: #fff;
     --red-color: #C33364;
+    --red : #D03535;
   }
 
   #root {

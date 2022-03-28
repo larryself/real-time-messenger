@@ -4,12 +4,14 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 8px;`
+  gap: 8px;
+`;
 
 export const Inner = styled.div`
   display: flex;
   border: 1px solid transparent;
-`
+`;
+
 export const Input = styled.input`
   width: 100%;
   background-color: var(--middle-grey);
@@ -30,4 +32,4 @@ export const Input = styled.input`
   &.invalid {
     box-shadow: 0 0 10px 1px rgb(255 0 0 / 70%);
   }
-`
+`;

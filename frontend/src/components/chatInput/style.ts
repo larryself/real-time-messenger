@@ -6,7 +6,7 @@ export const Container = styled.form`
   border-radius: 5px;
   border: 0;
   margin-top: 20px;
-`
+`;
 
 export const Input = styled.input`
   width: 100%;
@@ -14,7 +14,8 @@ export const Input = styled.input`
   color: #fff;
   border: 0;
   padding: 12px 15px;
-`
+`;
+
 export const Button = styled.button`
   padding: 10px 15px;
   border: 0;
@@ -26,4 +27,4 @@ export const Button = styled.button`
   &:active {
     opacity: .3;
   }
-`
+`;

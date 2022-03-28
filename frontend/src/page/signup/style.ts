@@ -6,7 +6,8 @@ export const Inner = styled.div`
   align-items: center;
   height: 100%;
   width: 100%;
-`
+`;
+
 export const Container = styled.form`
   min-width: 320px;
   display: flex;
@@ -15,4 +16,4 @@ export const Container = styled.form`
   border-radius: 5px;
   padding: 10px;
   gap: 10px
-`
+`;

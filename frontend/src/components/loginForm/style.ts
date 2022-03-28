@@ -8,11 +8,12 @@ export const Container = styled.form`
   padding: 20px;
   gap: 8px;
   min-width: 320px;
-`
+`;
+
 export const Title = styled.h1`
   text-align: center;
   font-size: 2rem;
-`
+`;
 
 export const Button = styled.button`
   align-self: flex-start;
@@ -27,9 +28,9 @@ export const Button = styled.button`
 
   &:disabled {
     background-color: var(--red-color);
-  }`
+  }
+`;
 
 export const Error = styled.p`
-  
-    color:rgb(208,53,53);
-`
+    color: var(--red);
+`;
