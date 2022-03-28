@@ -1,11 +1,13 @@
 import React from 'react';
-import { Container, Link } from './style';
+import { Container, Link, Inner, Title } from './style';
 
 export const NotFound = () => {
     return (
         <Container>
-            <h1>Page not found</h1>
-            <Link href={'/'}>На главную</Link>
+            <Inner>
+                <Title>Page not found</Title>
+                <Link href={'/'}>На главную</Link>
+            </Inner>
         </Container>
     );
 };
