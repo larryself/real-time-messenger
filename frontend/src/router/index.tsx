@@ -1,14 +1,27 @@
-import {Route, Routes} from "react-router-dom";
-import { Add } from "../page/add/add";
-import { Index } from "../page/index/index";
-import { Pay } from "../page/pay/pay";
+import {Route, Routes, Navigate} from "react-router-dom";
+import { Signup } from "../page/signup/signup";
+import { HomePage } from "../page/index/index";
+import { Login } from "../page/login/login";
+import {useAppSelector} from "../hooks/useAppSelector";
+
+const PrivateRoute = ({ children, user }: any )=> {
+    if (!user) {
+        return <Navigate to="/login" replace />;
+    }
+    return children;
+}
 
 export const AppRouter = () => {
+    const {email} = useAppSelector(state => state.user)
     return (
         <Routes>
-            <Route path="/" element={<Index />}/>
-            <Route path="/pay/:name" element={<Pay />} />
-            <Route path="/add" element={<Add />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/" element={
+                <PrivateRoute user={email}>
+                    <HomePage/>
+                </PrivateRoute>
+            } />
         </Routes>
     );
 }

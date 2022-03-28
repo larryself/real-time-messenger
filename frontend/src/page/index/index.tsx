@@ -1,19 +1,22 @@
 import React from 'react'
-import { OperatorList } from '../../components/operatorList'
-import Wrapper from '../../components/wrapper'
-import {Title} from './style';
+import {Wrapper} from '../../components/wrapper'
+import {useAppSelector} from "../../hooks/useAppSelector";
+import PageHeader from "../../components/header/header";
+import Chat from "../../components/chat/chat";
+import {Main} from "./style";
+import {useGetMessagesQuery} from "../../store/user/user";
 
-const Operators = [
-    {id: 1, name: 'MTC'},
-    {id: 2, name: 'beeline'},
-    {id: 3, name: 'MTC'}
-  ]
-
-export const Index = () => {
+export const HomePage = () => {
+    const {data,isFetching} = useGetMessagesQuery();
+    const {name} = useAppSelector(state => state.user);
     return (
-        <Wrapper>
-            <Title>Выберете оператора</Title>
-            <OperatorList operators={Operators} />
-        </Wrapper>
+        <>
+            <PageHeader/>
+            <Main>
+                <Wrapper>
+                    {data && !isFetching && <Chat messages={data}  name={name}/>}
+                </Wrapper>
+            </Main>
+        </>
     )
 }

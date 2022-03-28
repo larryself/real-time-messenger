@@ -5,12 +5,4 @@ interface WrapperProps {
     children: React.ReactNode;
 }
 
-const Wrapper:FC<WrapperProps> = ({children}) => {
-    return (
-        <Wrap>
-            {children}
-        </Wrap>
-    );
-};
-
-export default Wrapper;
+export const Wrapper:FC<WrapperProps> = ({children}) =>(<Wrap>{children}</Wrap>);

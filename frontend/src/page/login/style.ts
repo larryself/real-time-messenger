@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 export const Inner = styled.div`
   display: flex;
   justify-content: center;
@@ -14,5 +13,6 @@ export const Container = styled.form`
   border: 1px solid cadetblue;
   border-radius: 5px;
   padding: 10px;
-  gap: 10px
+  gap: 10px;
 `
+
