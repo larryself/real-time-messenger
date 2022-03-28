@@ -1,0 +1,30 @@
+{
+  "name": "real-time-chat",
+  "version": "1.0.0",
+  "description": "real-time-chat app",
+  "success_url": "/",
+  "scripts": {
+    "postinstall": "cd backend && yarn install && yarn build && cd ../frontend && yarn install && yarn build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/larryself/test.git"
+  },
+  "author": "yan m",
+  "prestart:prod": "ISC",
+  "engines": {
+    "node": "17.7.1",
+    "yarn": "1.22.17"
+  },
+  "image": "heroku/nodejs",
+  "addons": ["heroku-postgresql"],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "cacheDirectories": [
+    "frontend/node_modules",
+    "backend/node_modules"
+  ]
+}
