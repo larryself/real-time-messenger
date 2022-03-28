@@ -1,13 +1,15 @@
 import {
+  ForbiddenException,
   HttpException,
   HttpStatus,
   Injectable,
   UnauthorizedException,
 } from '@nestjs/common';
-import { UsersService } from '../users/services/users.service';
+import { UsersService } from '../../users/services/users.service';
 import { JwtService } from '@nestjs/jwt';
-import { AuthDto } from './dto/auth.dto';
+import { AuthDto } from '../dto/auth.dto';
 import * as bcrypt from 'bcryptjs';
+import { TokenDto } from '../dto/token.dto';
 
 @Injectable()
 export class AuthService {
@@ -71,6 +73,11 @@ export class AuthService {
       },
       HttpStatus.BAD_REQUEST,
     );
+  }
+
+  async refreshToken(tokenDto: TokenDto) {
+    const user = await this.usersService.getUserById(tokenDto.id);
+    if (!user) throw new ForbiddenException('Access Denied');
   }
 
   private async generateToken(user: {
