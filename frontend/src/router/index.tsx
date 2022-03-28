@@ -1,10 +1,17 @@
-import {Route, Routes, Navigate} from "react-router-dom";
+import React, { FC} from "react";
+import { Route, Routes, Navigate } from "react-router-dom";
 import { Signup } from "../page/signup/signup";
 import { HomePage } from "../page/index/index";
 import { Login } from "../page/login/login";
 import {useAppSelector} from "../hooks/useAppSelector";
 
-const PrivateRoute = ({ children, user }: any )=> {
+
+interface PrivateRouteProps {
+    children: React.ReactElement;
+    user: string | null;
+}
+
+const PrivateRoute: FC<PrivateRouteProps> = ({ children, user })=> {
     if (!user) {
         return <Navigate to="/login" replace />;
     }
