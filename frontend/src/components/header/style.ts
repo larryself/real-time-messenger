@@ -24,7 +24,7 @@ export const Button = styled.button`
   }
   
   &:hover{
-    color: #fff;
+    color: var(--white);
     background-color: var(--red-color);
   }
   

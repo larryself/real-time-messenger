@@ -21,7 +21,7 @@ export const Input = styled.input`
   color: var(--white);
 
   &:hover, &:focus {
-    background-color: rgb(64, 68, 99,1);
+    background-color: var(--dark-blue);
   }
 
   &::placeholder {

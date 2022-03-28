@@ -11,7 +11,7 @@ export const Container = styled.form`
 export const Input = styled.input`
   width: 100%;
   background-color: transparent;
-  color: #fff;
+  color: var(--white);
   border: 0;
   padding: 12px 15px;
 `;

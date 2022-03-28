@@ -1,7 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Monserrat');
+  @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500');
+
   html {
     font-size: 10px;
   }
@@ -17,6 +18,7 @@ export const GlobalStyle = createGlobalStyle`
   :root {
     --header-height: 86px;
     --grey-color: #2f2e2e;
+    --dark-blue: #404463;
     --middle-grey: #40444B;
     --ligth-grey: #6B7280;
     --default-bg: #36393F;
