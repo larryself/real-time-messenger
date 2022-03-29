@@ -13,8 +13,8 @@ interface MessageResponse {
 
 export interface User extends LoginResponse{
     token: string,
-    id: number,
 }
+
 interface LoginResponse {
     email: string,
     name: string,

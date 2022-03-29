@@ -38,6 +38,7 @@ const userSlice = createSlice({
             userApi.endpoints.signup.matchFulfilled,
             (state, {payload}) => {
                 state.token = payload.token;
+                state.isAuth = true;
                 localStorage.setItem('real-time-chat', JSON.stringify({token: payload.token, isAuth: true}))
             },
         )
