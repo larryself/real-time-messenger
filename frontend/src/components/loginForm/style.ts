@@ -26,6 +26,8 @@ export const Button = styled.button`
   border: 0;
   border-radius: 5px;
   background-color: var(--ligth-grey);
+  font-size: 1.5rem;
+  line-height: 1rem;
 
   &:focus, &:hover {
     opacity: .4;
@@ -40,7 +42,9 @@ export const Link = styled.a`
   padding: 12px 15px;
   border-radius: 5px;
   background-color: var(--ligth-grey);
-  
+  font-size: 1.5rem;
+  line-height: 1rem;
+
   &:focus, &:hover {
     opacity: .4;
   }
