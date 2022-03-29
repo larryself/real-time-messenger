@@ -5,14 +5,11 @@ import { GlobalStyle } from "./style";
 import {useAction} from "./hooks/useAction";
 
 export const App = () => {
-    const {setUser} = useAction();
-    const user = localStorage.getItem('real-time-chat');
-    useEffect(()=>{
-        if(user) {
-            console.log((JSON.parse(user)));
-            setUser(JSON.parse(user))
-        }
-    },[])
+  const {setUser} = useAction();
+  if(localStorage.getItem('real-time-chat')) {
+    const user = JSON.parse(localStorage.getItem('real-time-chat') as string);
+    setUser({email: user.email, name: user.name, id: user.id, token: user.token});
+  }
   return (
     <BrowserRouter>
         <GlobalStyle/>
