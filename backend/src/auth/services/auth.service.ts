@@ -23,7 +23,7 @@ export class AuthService {
     return this.generateToken(user);
   }
 
-  async registration(userInput: AuthDto) {
+  async signUp(userInput: AuthDto) {
     const candidateEmail = await this.usersService.getUserByEmail(
       userInput.email,
     );

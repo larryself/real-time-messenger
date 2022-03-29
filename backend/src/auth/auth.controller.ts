@@ -19,8 +19,8 @@ export class AuthController {
   @ApiOperation({ summary: 'Создание пользователя' })
   @ApiResponse({ status: 200 })
   @Post('/signup')
-  registration(@Body() userDto: AuthDto) {
-    return this.authService.registration(userDto);
+  signUp(@Body() userDto: AuthDto) {
+    return this.authService.signUp(userDto);
   }
 
   @ApiOperation({ summary: 'Обновление токена' })
