@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { InputBox } from '../inputBox/inputBox';
-import { Container, Title, BtnInner, Button, Link, Error } from './style';
+import { Container, Title, BtnInner, Button, A, Error } from './style';
 
 import { useFormik } from 'formik';
 import { Wrapper } from '../wrapper';
@@ -68,7 +68,7 @@ export const LoginForm: FC<LoginFormProps> = ({title,btnTitle, redirectLink,redi
                     />
                     <BtnInner>
                         <Button type={'submit'}>{btnTitle}</Button>
-                        <Link href = {redirectLink}>{redirectLinkTitle}</Link>
+                        <A to = {redirectLink}>{redirectLinkTitle}</A>
                     </BtnInner>
                     {error && <Error>{error.data.error}</Error>}
                 </Container>

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {Link} from "react-router-dom";
 
 export const Container = styled.div`
   height: 100%;
@@ -16,7 +17,7 @@ export const Inner = styled.div`
 export const Title = styled.h1`
   font-size: 2rem;`
 
-export const Link = styled.a`
+export const A = styled(Link)`
   color: var(--red-color);
   &:hover, &:focus{
     opacity: 0.4;
