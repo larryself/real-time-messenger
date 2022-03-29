@@ -1,6 +1,6 @@
-import {createSlice} from '@reduxjs/toolkit';
-import {userApi} from "./user";
-import type { TypeRootState} from "../store";
+import { createSlice } from '@reduxjs/toolkit';
+import { userApi } from "./user";
+import type { TypeRootState } from "../store";
 
 type UserState = {
     email: string | null
@@ -8,6 +8,7 @@ type UserState = {
     id: number | null
     name: string | null
 };
+
 const userSlice = createSlice({
     name: 'user',
     initialState: {email: null, token: null, id: null, name: null,} as UserState,
@@ -23,6 +24,7 @@ const userSlice = createSlice({
             state.token = null;
             state.id = null;
             state.name = null;
+            localStorage.removeItem('real-time-chat')
         },
     },
     extraReducers: (builder) => {
@@ -33,6 +35,7 @@ const userSlice = createSlice({
                 state.token = payload.token;
                 state.id = payload.id;
                 state.name =  payload.name;
+                localStorage.setItem('real-time-chat', JSON.stringify({email: payload.name, name: payload.name, token: payload.token, id: payload.id}))
             },
         )
         builder.addMatcher(
@@ -42,6 +45,7 @@ const userSlice = createSlice({
                 state.token = payload.token;
                 state.id = payload.id;
                 state.name =  payload.name;
+                localStorage.setItem('real-time-chat', JSON.stringify({email: payload.name, name: payload.name, token: payload.token, id: payload.id}))
             },
         )
     }
