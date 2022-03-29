@@ -5,25 +5,23 @@ import type { TypeRootState } from "../store";
 type UserState = {
     email: string | null
     token: string |null
-    id: number | null
     name: string | null
+    isAuth: false
 };
 
 const userSlice = createSlice({
     name: 'user',
-    initialState: {email: null, token: null, id: null, name: null,} as UserState,
+    initialState: {email: null, token: null, name: null,} as UserState,
     reducers: {
         setUser(state, action) {
             state.email = action.payload.email;
-            state.token = action.payload.token;
-            state.id = action.payload.id;
             state.name = action.payload.name;
         },
         removeUser(state) {
             state.email = null;
             state.token = null;
-            state.id = null;
             state.name = null;
+            state.isAuth = false
             localStorage.removeItem('real-time-chat')
         },
     },
@@ -31,21 +29,15 @@ const userSlice = createSlice({
         builder.addMatcher(
             userApi.endpoints.login.matchFulfilled,
             (state, {payload}) => {
-                state.email = payload.email;
                 state.token = payload.token;
-                state.id = payload.id;
-                state.name =  payload.name;
-                localStorage.setItem('real-time-chat', JSON.stringify({email: payload.email, name: payload.name, token: payload.token, id: payload.id}))
+                localStorage.setItem('real-time-chat', JSON.stringify({token: payload.token, isAuth: true}))
             },
         )
         builder.addMatcher(
             userApi.endpoints.signup.matchFulfilled,
             (state, {payload}) => {
-                state.email = payload.email;
                 state.token = payload.token;
-                state.id = payload.id;
-                state.name =  payload.name;
-                localStorage.setItem('real-time-chat', JSON.stringify({email: payload.email, name: payload.name, token: payload.token, id: payload.id}))
+                localStorage.setItem('real-time-chat', JSON.stringify({ token: payload.token, isAuth: true}))
             },
         )
     }

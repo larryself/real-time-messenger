@@ -6,6 +6,7 @@ import { useFormik } from 'formik';
 import { Wrapper } from '../wrapper';
 import { Inner } from '../../page/login/style';
 import { validate } from './validate';
+import {useAction} from "../../hooks/useAction";
 
 interface LoginFormProps {
     title: string;
@@ -17,6 +18,7 @@ interface LoginFormProps {
 }
 
 export const LoginForm: FC<LoginFormProps> = ({title,btnTitle, redirectLink,redirectLinkTitle,onSubmit, error}) => {
+    const {setUser} = useAction();
 
     const formik = useFormik({
         initialValues: {
@@ -30,6 +32,7 @@ export const LoginForm: FC<LoginFormProps> = ({title,btnTitle, redirectLink,redi
         },
     });
     async function handleSubmit(values: {name: string, password: string, email: string}) {
+        setUser({name: values.name, email: values.email})
         await onSubmit(values);
     }
     return (
