@@ -32,7 +32,7 @@ export const LoginForm: FC<LoginFormProps> = ({title,btnTitle, redirectLink,redi
         },
     });
     async function handleSubmit(values: {name: string, password: string, email: string}) {
-        setUser({name: values.name, email: values.email})
+        setUser({ name: values.name, email: values.email})
         await onSubmit(values);
     }
     return (
