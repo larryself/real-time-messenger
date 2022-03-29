@@ -35,12 +35,16 @@ const userSlice = createSlice({
         builder.addMatcher(
             userApi.endpoints.login.matchFulfilled,
             (state, {payload}) => {
+                state.token = payload.token;
+                state.isAuth = true;
                 localStorage.setItem('real-time-chat', JSON.stringify({token: payload.token, isAuth: true}))
             },
         )
         builder.addMatcher(
             userApi.endpoints.signup.matchFulfilled,
             (state, {payload}) => {
+                state.token = payload.token;
+                state.isAuth = true;
                 localStorage.setItem('real-time-chat', JSON.stringify({token: payload.token, isAuth: true}))
             },
         )
