@@ -21,7 +21,7 @@ export const Header = styled.div`
 `;
 
 export const Name = styled.p`
-  color: (--red-colo);
+  color: (--red-color);
 `;
 
 export const Data = styled.p`
