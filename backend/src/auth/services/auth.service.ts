@@ -7,9 +7,10 @@ import {
 } from '@nestjs/common';
 import { UsersService } from '../../users/services/users.service';
 import { JwtService } from '@nestjs/jwt';
-import { AuthDto } from '../dto/auth.dto';
 import * as bcrypt from 'bcryptjs';
 import { TokenDto } from '../dto/token.dto';
+import { CreateUserDto } from '../../users/dto/create-user.dto';
+import { UserEntity } from '../../users/entities/user.entity';
 
 @Injectable()
 export class AuthService {
@@ -18,61 +19,40 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async login(userInput: AuthDto) {
-    const user = await this.validateUser(userInput);
+  async login(userDto: CreateUserDto) {
+    const user = await this.validateUser(userDto);
     return this.generateToken(user);
   }
 
-  async signUp(userInput: AuthDto) {
-    const candidateEmail = await this.usersService.getUserByEmail(
-      userInput.email,
-    );
-    const candidateName = await this.usersService.getUserByName(userInput.name);
-    if (candidateEmail) {
+  async signUp(userDto: CreateUserDto) {
+    const candidate = await this.usersService.getUserByEmail(userDto.email);
+    if (candidate) {
       throw new HttpException(
-        {
-          status: HttpStatus.UNAUTHORIZED,
-          error: 'Пользователь с такой почтой существует ',
-        },
+        'Пользователь с такой почтой существует ',
         HttpStatus.UNAUTHORIZED,
       );
     }
 
-    if (candidateName) {
-      throw new HttpException(
-        {
-          status: HttpStatus.UNAUTHORIZED,
-          error: 'Пользователь с таким именем существует ',
-        },
-        HttpStatus.UNAUTHORIZED,
-      );
-    }
-
-    const hashPassword = await bcrypt.hash(userInput.password, 10);
+    const hashPassword = await bcrypt.hash(userDto.password, 10);
     const user = await this.usersService.createUser({
-      ...userInput,
+      ...userDto,
       password: hashPassword,
     });
     return this.generateToken(user);
   }
 
-  async validateUser(userInput: AuthDto) {
+  private async validateUser(userInput: CreateUserDto) {
     const user = await this.usersService.getUserByEmail(userInput.email);
-    const name = await this.usersService.getUserByName(userInput.name);
     const passwordEquals = await bcrypt.compare(
       userInput.password,
       user.password,
     );
-    if (user && name && passwordEquals) {
+    if (user && passwordEquals) {
       return user;
     }
-    throw new HttpException(
-      {
-        error: 'Некорректный email или имя или пароль',
-        status: HttpStatus.BAD_REQUEST,
-      },
-      HttpStatus.BAD_REQUEST,
-    );
+    throw new UnauthorizedException({
+      message: 'Некорректный email или пароль',
+    });
   }
 
   async refreshToken(tokenDto: TokenDto) {
@@ -80,13 +60,8 @@ export class AuthService {
     if (!user) throw new ForbiddenException('Access Denied');
   }
 
-  private async generateToken(user: {
-    email: string;
-    id: number;
-    name: string;
-    token?: string;
-  }) {
-    const payload = { email: user.email, name: user.name };
-    return { ...payload, id: user.id, token: this.jwtService.sign(payload) };
+  private async generateToken(user: UserEntity) {
+    const payload = { email: user.email, name: user.name, id: user.id };
+    return { token: this.jwtService.sign(payload) };
   }
 }
