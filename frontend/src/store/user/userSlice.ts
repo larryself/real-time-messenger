@@ -6,12 +6,12 @@ type UserState = {
     email: string | null
     token: string |null
     name: string | null
-    isAuth: false
+    isAuth: boolean
 };
 
 const userSlice = createSlice({
     name: 'user',
-    initialState: {email: null, token: null, name: null,} as UserState,
+    initialState: {email: null, token: null, isAuth: false, name: null,} as UserState,
     reducers: {
         setUser(state, action) {
             state.email = action.payload.email;
@@ -30,6 +30,7 @@ const userSlice = createSlice({
             userApi.endpoints.login.matchFulfilled,
             (state, {payload}) => {
                 state.token = payload.token;
+                state.isAuth = true;
                 localStorage.setItem('real-time-chat', JSON.stringify({token: payload.token, isAuth: true}))
             },
         )
@@ -37,7 +38,7 @@ const userSlice = createSlice({
             userApi.endpoints.signup.matchFulfilled,
             (state, {payload}) => {
                 state.token = payload.token;
-                localStorage.setItem('real-time-chat', JSON.stringify({ token: payload.token, isAuth: true}))
+                localStorage.setItem('real-time-chat', JSON.stringify({token: payload.token, isAuth: true}))
             },
         )
     }
