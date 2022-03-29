@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { InputBox } from '../inputBox/inputBox';
-import { Container, Title, Button, Error } from './style';
-import { Link } from 'react-router-dom';
+import { Container, Title, BtnInner, Button, Link, Error } from './style';
+
 import { useFormik } from 'formik';
 import { Wrapper } from '../wrapper';
 import { Inner } from '../../page/login/style';
@@ -66,8 +66,10 @@ export const LoginForm: FC<LoginFormProps> = ({title,btnTitle, redirectLink,redi
                         onBlur={formik.handleBlur}
                         className = {formik.touched.password && formik.errors.password ? 'invalid': 'valid'}
                     />
-                    <Button type={'submit'}>{btnTitle}</Button>
-                    <Link to={redirectLink}>{redirectLinkTitle}</Link>
+                    <BtnInner>
+                        <Button type={'submit'}>{btnTitle}</Button>
+                        <Link href = {redirectLink}>{redirectLinkTitle}</Link>
+                    </BtnInner>
                     {error && <Error>{error.data.error}</Error>}
                 </Container>
             </Inner>

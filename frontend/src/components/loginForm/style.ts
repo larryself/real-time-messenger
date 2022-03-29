@@ -15,6 +15,11 @@ export const Title = styled.h1`
   font-size: 2rem;
 `;
 
+export const BtnInner = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
 export const Button = styled.button`
   align-self: flex-start;
   padding: 12px 15px;
@@ -28,6 +33,16 @@ export const Button = styled.button`
 
   &:disabled {
     background-color: var(--red-color);
+  }
+`;
+
+export const Link = styled.a`
+  padding: 12px 15px;
+  border-radius: 5px;
+  background-color: var(--ligth-grey);
+  
+  &:focus, &:hover {
+    opacity: .4;
   }
 `;
 
