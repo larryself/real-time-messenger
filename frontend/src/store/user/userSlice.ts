@@ -35,7 +35,7 @@ const userSlice = createSlice({
                 state.token = payload.token;
                 state.id = payload.id;
                 state.name =  payload.name;
-                localStorage.setItem('real-time-chat', JSON.stringify({email: payload.name, name: payload.name, token: payload.token, id: payload.id}))
+                localStorage.setItem('real-time-chat', JSON.stringify({email: payload.email, name: payload.name, token: payload.token, id: payload.id}))
             },
         )
         builder.addMatcher(
@@ -45,7 +45,7 @@ const userSlice = createSlice({
                 state.token = payload.token;
                 state.id = payload.id;
                 state.name =  payload.name;
-                localStorage.setItem('real-time-chat', JSON.stringify({email: payload.name, name: payload.name, token: payload.token, id: payload.id}))
+                localStorage.setItem('real-time-chat', JSON.stringify({email: payload.email, name: payload.name, token: payload.token, id: payload.id}))
             },
         )
     }
