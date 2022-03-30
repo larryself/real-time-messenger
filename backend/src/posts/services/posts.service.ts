@@ -18,5 +18,4 @@ export class PostService {
   async getAllPosts(): Promise<PostEntity[]> {
     return await this.postRepository.find();
   }
-
 }

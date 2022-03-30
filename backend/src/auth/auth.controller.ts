@@ -26,7 +26,7 @@ export class AuthController {
   @ApiOperation({ summary: 'Обновление токена' })
   @ApiResponse({ status: 200 })
   @Post('/refresh')
-  refreshTokens(@Body() userDto: TokenDto) {
+  refreshToken(@Body() userDto: TokenDto) {
     return this.authService.refreshToken(userDto);
   }
 }
