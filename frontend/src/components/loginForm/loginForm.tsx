@@ -73,7 +73,7 @@ export const LoginForm: FC<LoginFormProps> = ({title,btnTitle, redirectLink,redi
                         <Button type={'submit'}>{btnTitle}</Button>
                         <A to = {redirectLink}>{redirectLinkTitle}</A>
                     </BtnInner>
-                    {error && <Error>{error.data.error}</Error>}
+                    {error && <Error>{error.data.message}</Error>}
                 </Container>
             </Inner>
         </Wrapper>
