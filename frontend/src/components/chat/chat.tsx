@@ -6,9 +6,9 @@ import { MessagesType } from '../../types';
 
 interface ChatProps {
     messages: MessagesType[],
-    name?: string,
+    name: string,
 }
-export const Chat: FC<ChatProps> = ({messages, name = 'You'})=> {
+export const Chat: FC<ChatProps> = ({messages, name})=> {
     return (
         <Container>
             <ChatInner>

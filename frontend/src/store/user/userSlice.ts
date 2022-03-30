@@ -16,10 +16,6 @@ const userSlice = createSlice({
         setUser(state, action) {
             state.email = action.payload.email;
             state.name = action.payload.name;
-            state.token = state.token;
-            state.isAuth = state.isAuth;
-        },
-        setToken(state,action) {
             state.token = action.payload.token;
             state.isAuth = action.payload.isAuth;
         },
@@ -37,11 +33,27 @@ const userSlice = createSlice({
             (state, {payload}) => {
                 state.token = payload.token;
                 state.isAuth = true;
-                localStorage.setItem('real-time-chat', JSON.stringify({token: payload.token, isAuth: true}))
+                localStorage.setItem('real-time-chat', JSON.stringify({...state}))
             },
         )
         builder.addMatcher(
             userApi.endpoints.signup.matchFulfilled,
+            (state, {payload}) => {
+                state.token = payload.token;
+                state.isAuth = true;
+                localStorage.setItem('real-time-chat', JSON.stringify({token: payload.token, isAuth: true}))
+            },
+        )
+        builder.addMatcher(
+            userApi.endpoints.logout.matchFulfilled,
+            (state, {payload}) => {
+                state.token = payload.token;
+                state.isAuth = true;
+                localStorage.removeItem('real-time-chat')
+            },
+        )
+        builder.addMatcher(
+            userApi.endpoints.refreshToken.matchFulfilled,
             (state, {payload}) => {
                 state.token = payload.token;
                 state.isAuth = true;

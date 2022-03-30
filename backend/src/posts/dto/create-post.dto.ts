@@ -8,8 +8,8 @@ export class CreatePostDto {
   // readonly from?: string;
 
   @ApiProperty({
-    example: 'текст сообщения',
-    description: 'текст сообщения',
+    example: 'Автор сообщения',
+    description: 'Автор сообщения',
     type: String,
   })
   readonly to: string;

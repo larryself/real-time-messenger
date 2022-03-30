@@ -63,6 +63,13 @@ export const userApi = createApi({
                 body
             }),
         }),
+        logout: build.mutation<User, LoginResponse>({
+            query: (body) => ({
+                url: 'auth/logout',
+                method: 'POST',
+                body
+            }),
+        }),
         sendMessage: build.mutation<Message, MessageResponse>({
             queryFn: (chatMessageContent: MessageResponse) => {
                 const socket = getSocket();
@@ -72,6 +79,13 @@ export const userApi = createApi({
                     });
                 })
             },
+        }),
+        refreshToken: build.mutation<User, LoginResponse>({
+            query: (body) => ({
+                url: 'auth/signup',
+                method: 'POST',
+                body
+            }),
         }),
         getMessages: build.query<Message[], void>({
             query: () => 'posts',

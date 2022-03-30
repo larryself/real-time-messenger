@@ -14,7 +14,7 @@ export const HomePage = () => {
             <PageHeader/>
             <Main>
                 <Wrapper>
-                    {data && !isFetching && <Chat messages={data}/>}
+                    {data && !isFetching && name && <Chat messages={data} name={name}/>}
                 </Wrapper>
             </Main>
         </>
