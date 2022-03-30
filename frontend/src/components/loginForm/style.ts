@@ -8,7 +8,7 @@ export const Container = styled.form`
   border-radius: 5px;
   padding: 20px;
   gap: 8px;
-  min-width: 320px;
+  width: 320px;
 `;
 
 export const Title = styled.h1`
