@@ -19,7 +19,7 @@ export const Message:FC<MessageProps> = ({message,name}) => {
         <Inner style={{justifyContent: isYou ? 'flex-end': 'flex-start'}}>
             <Container>
                 <Header>
-                    <Name>{message.to}</Name>
+                    <Name>{message.to === name ? 'You' : message.to}</Name>
                     <Data>{dateConverter(message.created_at)}</Data>
                 </Header>
                 <Content>{message.message}</Content>
