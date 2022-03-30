@@ -9,13 +9,6 @@ import { JwtAuthGuard } from '../auth/guard/jwt-auth.guard';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @ApiOperation({ summary: 'Создание пользователя' })
-  @ApiResponse({ status: 200, description: 'Созданный пользователь' })
-  @Post()
-  create(@Body() userDto: CreateUserDto) {
-    return this.usersService.createUser(userDto);
-  }
-
   @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Получение всех пользователей' })
   @ApiResponse({
