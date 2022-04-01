@@ -52,24 +52,23 @@ const baseQueryWithReauth: BaseQueryFn<
   FetchBaseQueryError>= async (args, api, extraOptions) => {
     await mutex.waitForUnlock();
     let result = await baseQuery(args, api, extraOptions);
-    debugger
-    console.log(result)
     if (result.error && result.error.status === 401) {
         if (!mutex.isLocked()) {
             const release = await mutex.acquire();
-
+            const currentUser = (api.getState() as TypeRootState).user;
+            const body = {email: currentUser.email, token: currentUser.token}
             try {
                 const refreshResult = await baseQuery(
-                  '/refresh',
+                  {
+                      url:'auth/refresh',
+                      method: 'POST',
+                      body
+                  },
                   api,
                   extraOptions
                 )
-
                 if (refreshResult.data) {
-                    debugger
-                    console.log(refreshResult.data)
-                    api.dispatch(userActions.setUser({token: refreshResult.data}));
-
+                    api.dispatch(userActions.updateToken(refreshResult.data));
                     result = await baseQuery(args, api, extraOptions);
                 } else {
                     api.dispatch(userActions.removeUser());
@@ -82,7 +81,6 @@ const baseQueryWithReauth: BaseQueryFn<
             result = await baseQuery(args, api, extraOptions);
         }
     }
-
     return result;
 };
 

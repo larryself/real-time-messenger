@@ -26,6 +26,11 @@ const userSlice = createSlice({
             state.isAuth = false
             localStorage.removeItem('real-time-chat')
         },
+        updateToken(state,action) {
+            state.token = action.payload.token
+            console.log(state)
+          debugger
+        }
     },
     extraReducers: (builder) => {
         builder.addMatcher(
