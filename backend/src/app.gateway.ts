@@ -11,7 +11,7 @@ import { Logger } from '@nestjs/common';
 import { Socket, Server } from 'socket.io';
 import { PostService } from './posts/services/posts.service';
 
-@WebSocketGateway()
+@WebSocketGateway({ cors: '*:*' })
 export class AppGateway
   implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect
 {
