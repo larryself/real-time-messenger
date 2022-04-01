@@ -4,7 +4,7 @@ import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function start() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, { cors: true });
   const config = await app.get(ConfigService);
   const configSwagger = new DocumentBuilder()
     .setTitle('Realtime chat')
@@ -14,8 +14,6 @@ async function start() {
   app.setGlobalPrefix('api');
   const document = SwaggerModule.createDocument(app, configSwagger);
   SwaggerModule.setup('/api/docs', app, document);
-
-  app.enableCors();
   await app.listen(process.env.PORT || 3000, () => {
     console.log(`Server started on port ${process.env.PORT}`);
   });
