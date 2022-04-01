@@ -11,7 +11,13 @@ import { Logger } from '@nestjs/common';
 import { Socket, Server } from 'socket.io';
 import { PostService } from './posts/services/posts.service';
 
-@WebSocketGateway({ cors: '*:*' })
+@WebSocketGateway({
+  cors: {
+    credentials: true,
+    methods: ['GET', 'POST'],
+    origin: ['https://realtime-messenger18.herokuapp.com/'],
+  },
+})
 export class AppGateway
   implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect
 {
