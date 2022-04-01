@@ -35,14 +35,25 @@ enum ChatEvent {
 
 
 const mutex = new Mutex();
-const baseQuery = fetchBaseQuery({ baseUrl: '/api' })
+const baseQuery = fetchBaseQuery({
+    baseUrl: '/api' ,
+    prepareHeaders: (headers, {getState}) => {
+        const token = (getState() as TypeRootState).user.token
+        if(token) {
+            headers.set('Authorization', `Bearer ${token}`)
+        }
+        return headers
+    },
+})
+
 const baseQueryWithReauth: BaseQueryFn<
   string | FetchArgs,
   unknown,
   FetchBaseQueryError>= async (args, api, extraOptions) => {
     await mutex.waitForUnlock();
     let result = await baseQuery(args, api, extraOptions);
-
+    debugger
+    console.log(result)
     if (result.error && result.error.status === 401) {
         if (!mutex.isLocked()) {
             const release = await mutex.acquire();
@@ -55,6 +66,8 @@ const baseQueryWithReauth: BaseQueryFn<
                 )
 
                 if (refreshResult.data) {
+                    debugger
+                    console.log(refreshResult.data)
                     api.dispatch(userActions.setUser({token: refreshResult.data}));
 
                     result = await baseQuery(args, api, extraOptions);
