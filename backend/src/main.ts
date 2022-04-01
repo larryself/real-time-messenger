@@ -16,9 +16,9 @@ async function start() {
   SwaggerModule.setup('/api/docs', app, document);
 
   app.enableCors({
-    allowedHeaders: '*',
-    origin: 'https://realtime-messenger18.herokuapp.com/',
-    credentials: true,
+    origin: '*',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    allowedHeaders: 'Content-Type, Accept',
   });
   await app.listen(process.env.PORT || 3000, () => {
     console.log(`Server started on port ${process.env.PORT}`);
