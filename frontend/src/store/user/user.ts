@@ -1,6 +1,9 @@
-import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
+import { BaseQueryFn, createApi, FetchArgs, fetchBaseQuery, FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
 import {io, Socket} from "socket.io-client";
 import {TypeRootState} from "../store";
+import { Mutex } from 'async-mutex';
+import { userActions } from './userSlice';
+
 interface Message extends MessageResponse{
     id: number;
     created_at: string;
@@ -28,6 +31,48 @@ enum ChatEvent {
     ReceiveMessage = 'receive_message',
 }
 
+
+
+
+const mutex = new Mutex();
+const baseQuery = fetchBaseQuery({ baseUrl: '/api' })
+const baseQueryWithReauth: BaseQueryFn<
+  string | FetchArgs,
+  unknown,
+  FetchBaseQueryError>= async (args, api, extraOptions) => {
+    await mutex.waitForUnlock();
+    let result = await baseQuery(args, api, extraOptions);
+
+    if (result.error && result.error.status === 401) {
+        if (!mutex.isLocked()) {
+            const release = await mutex.acquire();
+
+            try {
+                const refreshResult = await baseQuery(
+                  '/refresh',
+                  api,
+                  extraOptions
+                )
+
+                if (refreshResult.data) {
+                    api.dispatch(userActions.setUser({token: refreshResult.data}));
+
+                    result = await baseQuery(args, api, extraOptions);
+                } else {
+                    api.dispatch(userActions.removeUser());
+                }
+            } finally {
+                release();
+            }
+        } else {
+            await mutex.waitForUnlock();
+            result = await baseQuery(args, api, extraOptions);
+        }
+    }
+
+    return result;
+};
+
 let socket: Socket;
 function getSocket() {
     if (!socket) {
@@ -37,17 +82,9 @@ function getSocket() {
     }
     return socket;
 }
+
 export const userApi = createApi({
-    baseQuery: fetchBaseQuery({
-        baseUrl: '/api',
-        prepareHeaders: (headers, {getState}) => {
-            const token = (getState() as TypeRootState).user.token
-            if(token) {
-                headers.set('Authorization', `Bearer ${token}`)
-            }
-            return headers
-        },
-    }),
+    baseQuery: baseQueryWithReauth,
     endpoints: build => ({
         login: build.mutation<User, LoginResponse>({
             query: (body) => ({
