@@ -1,5 +1,4 @@
 export class TokenDto {
-  id: number;
-
+  email: string;
   token: string;
 }

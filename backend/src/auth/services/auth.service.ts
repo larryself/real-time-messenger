@@ -56,8 +56,9 @@ export class AuthService {
   }
 
   async refreshToken(tokenDto: TokenDto) {
-    const user = await this.usersService.getUserById(tokenDto.id);
+    const user = await this.usersService.getUserByEmail(tokenDto.email);
     if (!user) throw new ForbiddenException('Access Denied');
+    return await this.generateToken(user);
   }
 
   private async generateToken(user: UserEntity) {
