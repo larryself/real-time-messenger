@@ -21,9 +21,11 @@ export const Button = styled.button`
   border: 0;
   background-color: inherit;
   color: var(--ligth-grey);
+
   &:hover, &:focus {
     color: var(--white);
   }
+
   &:active {
     opacity: .3;
   }

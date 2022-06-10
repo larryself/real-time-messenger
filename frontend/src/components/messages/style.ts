@@ -9,4 +9,5 @@ export const List = styled.ul`
   overflow-y: auto;
   height: 100%;
   margin-right: -15px;
-  padding-right: 10px;`
+  padding-right: 10px;
+`;

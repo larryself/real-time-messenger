@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Wrap } from './style';
 
 interface WrapperProps {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }
 
-export const Wrapper:FC<WrapperProps> = ({children}) =>(<Wrap>{children}</Wrap>);
+export const Wrapper: FC<WrapperProps> = ({ children }) => (<Wrap>{children}</Wrap>);

@@ -19,15 +19,16 @@ export const Button = styled.button`
   color: var(--red-color);
   padding: 12px 15px;
   border-radius: 5px;
+
   &:focus {
-    border-color:var(--red-color)
+    border-color: var(--red-color)
   }
-  
-  &:hover{
+
+  &:hover {
     color: var(--white);
     background-color: var(--red-color);
   }
-  
+
   &:active {
     opacity: 0.3;
   }

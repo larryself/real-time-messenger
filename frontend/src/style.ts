@@ -5,7 +5,7 @@ export const GlobalStyle = createGlobalStyle`
   html {
     font-size: 10px;
   }
-  
+
   body {
     font-family: 'Monserrat', sans-serif;
     height: 100vh;
@@ -13,7 +13,7 @@ export const GlobalStyle = createGlobalStyle`
     color: var(--white);
     background-color: var(--default-bg);
   }
-  
+
   :root {
     --header-height: 86px;
     --grey-color: #2f2e2e;
@@ -23,7 +23,7 @@ export const GlobalStyle = createGlobalStyle`
     --default-bg: #36393F;
     --white: #fff;
     --red-color: #C33364;
-    --red : #D03535;
+    --red: #D03535;
   }
 
   #root {
