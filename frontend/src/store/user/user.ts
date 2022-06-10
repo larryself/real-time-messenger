@@ -130,7 +130,7 @@ export const userApi = createApi({
         }),
         refreshToken: build.mutation<User, LoginResponse>({
             query: (body) => ({
-                url: 'auth/signup',
+                url: 'auth/refresh',
                 method: 'POST',
                 body
             }),
