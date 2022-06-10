@@ -141,7 +141,7 @@ export const userApi = createApi({
         try {
           await cacheDataLoaded;
 
-          const socket = io('https://realtime-messenger18.herokuapp.com');
+          const socket = io('https://realtime-messenger18.herokuapp.com/');
 
           socket.on('connect', () => {
             socket.emit(ChatEvent.RequestAllMessages);
