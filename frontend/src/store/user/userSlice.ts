@@ -44,6 +44,7 @@ const userSlice = createSlice({
       (state, { payload }) => {
         state.token = payload.token;
         state.isAuth = true;
+        console.log('PAYLOAD in signUp', payload)
         localStorage.setItem('real-time-chat', JSON.stringify({ token: payload.token, isAuth: true }))
       },
     )
